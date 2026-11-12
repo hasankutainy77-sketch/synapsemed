@@ -1,0 +1,7 @@
+node_modules/
+android/
+www/lib/three.min.js
+assets/icon.png
+assets/splash.png
+*.log
+.DS_Store
