@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2732 2732">
+  <rect width="2732" height="2732" fill="#0a7d68"/>
+  <g transform="translate(1366 1366)">
+    <rect x="-180" y="-380" width="360" height="760" rx="60" fill="#ffffff"/>
+    <rect x="-380" y="-180" width="760" height="360" rx="60" fill="#ffffff"/>
+  </g>
+  <text x="1366" y="2050" text-anchor="middle" font-family="sans-serif"
+        font-size="180" font-weight="bold" fill="#ffffff">SynapseMed</text>
+</svg>
