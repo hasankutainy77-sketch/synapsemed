@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "simulators": [
+    {
+      "id": "clinical",
+      "title": "حالة سريرية — ألم بطني",
+      "description": "محاكي تشخيص حالة ألم في البطن",
+      "emoji": "🩺",
+      "file": "clinical-sim.html"
+    },
+    {
+      "id": "appendectomy",
+      "title": "استئصال الزائدة (2D)",
+      "description": "خطوات العملية خطوة بخطوة",
+      "emoji": "🔪",
+      "file": "appendectomy-sim.html"
+    },
+    {
+      "id": "appendectomy-3d",
+      "title": "استئصال الزائدة (3D)",
+      "description": "محاكي ثلاثي الأبعاد",
+      "emoji": "🧊",
+      "file": "appendectomy-3d.html"
+    },
+    {
+      "id": "pneumothorax",
+      "title": "استرواح صدري",
+      "description": "محاكي تشخيص وعلاج الاسترواح",
+      "emoji": "🫁",
+      "file": "pneumothorax-sim.html"
+    }
+  ]
+}
