@@ -1,0 +1,56 @@
+name: Build APK
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with: { node-version: '20' }
+
+      - uses: actions/setup-java@v4
+        with: { distribution: 'temurin', java-version: '17' }
+
+      - uses: android-actions/setup-android@v3
+
+      - name: Download three.js locally (offline)
+        run: |
+          mkdir -p www/lib
+          curl -fL -o www/lib/three.min.js https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js
+
+      - name: Install npm deps
+        run: npm install
+
+      - name: Convert SVG assets to PNG
+        run: |
+          sudo apt-get install -y librsvg2-bin
+          rsvg-convert -w 1024 -h 1024 assets/icon.svg > assets/icon.png
+          rsvg-convert -w 2732 -h 2732 assets/splash.svg > assets/splash.png
+
+      - name: Add Android platform (first run only)
+        run: |
+          if [ ! -d "android" ]; then npx cap add android; fi
+
+      - name: Sync Capacitor
+        run: npx cap sync android
+
+      - name: Generate launcher icon & splash
+        run: npx @capacitor/assets generate --android
+
+      - name: Build debug APK
+        run: |
+          cd android
+          chmod +x gradlew
+          ./gradlew assembleDebug --no-daemon
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: SynapseMed-APK
+          path: android/app/build/outputs/apk/debug/app-debug.apk
